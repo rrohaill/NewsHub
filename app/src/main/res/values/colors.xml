@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#00BCD4</color>
+    <color name="windowBackground">#fff</color>
+    <color name="navigationBarColor">#0288D1</color>
+    <color name="statusBarColor">#0288D1</color>
+    <color name="textColorPrimary">#fff4f4f4</color>
+
+    <color name="red">#C3161C</color>
+    <color name="dark_gray">#373737</color>
+    <color name="dark_gray_holo">#37373700</color>
+    <color name="disabled">#c6c6c6</color>
+    <color name="disabled_dark_gray">#a7a5a5</color>
+    <color name="shadow_gray">#40000000</color>
+    <color name="light_gray">#e5e5e5</color>
+
+    <color name="dark_grey_color">#393a3b</color>
+    <color name="grey_lightest">#FAFAFA</color>
+
+    <color name="green">#A4CE23</color>
+    <color name="green_button">#09A55E</color>
+    <color name="blue_button">#294CA0</color>
+    <color name="blue">#0000ff</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="text_grey">#424242</color>
+    <color name="blue_bg">#2ea3db</color>
+    <color name="line_light_grey">#c1c1c1</color>
+    <color name="lightest_grey_bg">#f3f3f3</color>
+    <color name="text_blue">#6086E0</color>
+    <color name="text_grey_heading">#697082</color>
+    <color name="text_grey_light">#6a707e</color>
+    <color name="bg_table_row_color2">#bfbfbf</color>
+    <color name="Black">#000000</color>
+    <color name="btn_red_hover">#d03a24</color>
+    <color name="btn_disable">#c2c2c2</color>
+    <color name="dialog_background">#B5B5B5</color>
+    <color name="light_grey_text">#7c7c7c</color>
+    <color name="deep_orange">#E77320</color>
+    <color name="grey_delink">#C9C9C9</color>
+    <color name="activity_bg">#e4e5e5</color>
+    <color name="activity_bg_black">#374046</color>
+    <!--
+  Use android transparent to avoid a bug where background set to transparent shows an image instead:
+  Stack overflow here:http://stackoverflow.com/questions/3822123/weird-layout-problem-please-see-the-attached-image-->
+
+    <color name="transparent">@android:color/transparent</color>
+    //TODO check implementation for this color
+    <color name="transparent_black">#55000000</color>
+    <color name="grey_bg">#E4E4E4</color>
+
+    <!-- drawer layout -->
+
+    <color name="list_background">#FFFFFF</color>
+    <color name="list_background_pressed">#E5E5E5</color>
+    <color name="nav_drawer_list_divider">#bfbfbf</color>
+    <color name="counter_text_color">#1D1D1D</color>
+    <color name="holo_green">#99cc00</color>
+    <color name="nav_drawer_text_color">#404040</color>
+    <color name="list_background_color">#a5adb0</color>
+    <color name="sub_header_text_color">#ffcdd2</color>
+
+    <color name="layout_background_color">#F4F4F4</color>
+
+    <color name="accounts_background_color">#22BF64</color>
+</resources>
