@@ -6,7 +6,7 @@
     <color name="windowBackground">#fff</color>
     <color name="navigationBarColor">#0288D1</color>
     <color name="statusBarColor">#0288D1</color>
-    <color name="textColorPrimary">#fff4f4f4</color>
+    <color name="textColorPrimary">#373737</color>
 
     <color name="red">#C3161C</color>
     <color name="dark_gray">#373737</color>

@@ -1,6 +1,9 @@
 package com.rohail.beyondinfinity.news.hub.newshub.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,8 @@ import android.widget.TextView;
 import com.rohail.beyondinfinity.news.hub.newshub.R;
 import com.rohail.beyondinfinity.news.hub.newshub.models.Articles;
 import com.squareup.picasso.Picasso;
+
+import static com.rohail.beyondinfinity.news.hub.newshub.R.id.imageView;
 
 /**
  * Created by rohail on 2/10/2017.
@@ -35,12 +40,25 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(ArticleAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final ArticleAdapter.MyViewHolder holder, final int position) {
 
         holder.tvTitle.setText(sourcesArrayList[position].getTitle());
 
         Picasso.with(context).load(sourcesArrayList[position].getUrlToImage())
-                .placeholder(R.mipmap.stub).into(holder.icon);
+                .placeholder(R.mipmap.stub).into(holder.icon, new com.squareup.picasso.Callback() {
+            @Override
+            public void onSuccess() {
+                holder.icon.buildDrawingCache();
+                Bitmap bitmap = holder.icon.getDrawingCache();
+                generatePalette(bitmap, holder.tvTitle);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
 
         holder.llMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +67,18 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             }
         });
 
+    }
+
+    private void generatePalette(Bitmap path, final TextView textView) {
+
+        int defaultColor = Color.parseColor("#000000");
+
+        Palette.from(path).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                textView.setTextColor(palette.getDominantColor(context.getResources().getColor(R.color.dark_gray)));
+            }
+        });
     }
 
 
@@ -68,7 +98,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            icon = (ImageView) itemView.findViewById(R.id.imageView);
+            icon = (ImageView) itemView.findViewById(imageView);
             tvTitle = (TextView) itemView.findViewById(R.id.title);
             llMain = (RelativeLayout) itemView.findViewById(R.id.rl_parent);
         }
