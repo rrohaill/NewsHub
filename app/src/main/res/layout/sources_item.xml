@@ -40,7 +40,7 @@
                 android:lines="1"
                 android:singleLine="true"
                 android:text="Title"
-                android:textColor="@color/dark_gray"
+                android:textColor="@color/white"
                 android:textSize="@dimen/textViewTextSizeNormal"
                 android:textStyle="bold" />
         </RelativeLayout>

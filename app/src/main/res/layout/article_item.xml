@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/articleGridImageHeight"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:lines="3"
                 android:text="Title"
-                android:textColor="@color/dark_gray"
+                android:textColor="@color/white"
                 android:textSize="@dimen/textViewTextSizeNormal"
                 android:textStyle="bold" />
         </RelativeLayout>

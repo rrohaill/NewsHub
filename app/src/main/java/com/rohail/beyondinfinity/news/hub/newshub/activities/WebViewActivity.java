@@ -1,27 +1,24 @@
 package com.rohail.beyondinfinity.news.hub.newshub.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.rohail.beyondinfinity.news.hub.newshub.Adapters.ArticleAdapter;
-import com.rohail.beyondinfinity.news.hub.newshub.Adapters.IOnItemClickCustomListner;
 import com.rohail.beyondinfinity.news.hub.newshub.R;
-import com.rohail.beyondinfinity.news.hub.newshub.models.ArticleModel;
 import com.rohail.beyondinfinity.news.hub.newshub.util.Constants;
 
-public class ArticlesActivity extends BaseActivity implements IOnItemClickCustomListner {
+public class WebViewActivity extends BaseActivity {
 
-    private RecyclerView gridview;
-    private ArticleAdapter imgAdapter;
-    private ArticleModel articleModel;
+    private WebView webView;
+    private String url = "";
     private AdView adView;
     private InterstitialAd mInterstitialAd;
 
@@ -35,7 +32,6 @@ public class ArticlesActivity extends BaseActivity implements IOnItemClickCustom
         fetchIntents();
         initView();
         showBannerAd();
-        showInterstitialAd();
 
     }
 
@@ -74,29 +70,49 @@ public class ArticlesActivity extends BaseActivity implements IOnItemClickCustom
     }
 
     private void fetchIntents() {
-        articleModel = (ArticleModel) getIntent().getExtras().get(Constants.IntentKeys.ARTICLE_MODEL);
+        if (getIntent().hasExtra(Constants.IntentKeys.BROWSER_URL)) {
+            url = (String) getIntent().getExtras().get(Constants.IntentKeys.BROWSER_URL);
+        }
     }
 
     private void initView() {
+        findViewById(R.id.web_view_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.searchView).setVisibility(View.GONE);
+        findViewById(R.id.gridView).setVisibility(View.GONE);
 
-        gridview = (RecyclerView) findViewById(R.id.gridView);
-        imgAdapter = new ArticleAdapter(this, articleModel.getArticles(), this);
-//        imgAdapter.setClickListener(this);
-        gridview.setAdapter(imgAdapter);
+        webView = (WebView) findViewById(R.id.webview);
 
-        gridview.setLayoutManager(new GridLayoutManager(this, 1));
+        showLoading();
 
-        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
-        itemAnimator.setAddDuration(1000);
-        itemAnimator.setRemoveDuration(1000);
-        gridview.setItemAnimator(itemAnimator);
+        webView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
+
+            public void onPageFinished(WebView view, String url) {
+                hideLoading();
+                showInterstitialAd();
+            }
+
+            public void onReceivedError(WebView view, int errorCode,
+                                        String description, String failingUrl) {
+
+                showAlertDialog(getString(R.string.title_alert), description, WebViewActivity.this, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        finish();
+                    }
+                });
+            }
+        });
+
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        webView.loadUrl(url);
     }
 
-    @Override
-    public void onItemClicked(View view, int position) {
-        Intent intent = new Intent(ArticlesActivity.this, ArticleDetailActivity.class);
-        intent.putExtra(Constants.IntentKeys.ARTICLE, articleModel.getArticles()[position]);
-        startActivity(intent);
-    }
 }

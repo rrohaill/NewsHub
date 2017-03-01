@@ -13,6 +13,8 @@ import com.rohail.beyondinfinity.news.hub.newshub.R;
 import com.rohail.beyondinfinity.news.hub.newshub.models.Sources;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * Created by rohail on 2/9/2017.
  */
@@ -20,10 +22,10 @@ import com.squareup.picasso.Picasso;
 public class SourcesAdapter extends RecyclerView.Adapter<SourcesAdapter.MyViewHolder> {
 
     private Context context;
-    private Sources[] sourcesArrayList;
+    private ArrayList<Sources> sourcesArrayList;
     private IOnItemClickCustomListner iOnItemClickCustomListner;
 
-    public SourcesAdapter(Context context, Sources[] sources, IOnItemClickCustomListner listner) {
+    public SourcesAdapter(Context context, ArrayList<Sources> sources, IOnItemClickCustomListner listner) {
         this.context = context;
         this.sourcesArrayList = sources;
         iOnItemClickCustomListner = listner;
@@ -31,15 +33,15 @@ public class SourcesAdapter extends RecyclerView.Adapter<SourcesAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return sourcesArrayList.length;
+        return sourcesArrayList.size();
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-        holder.tvTitle.setText(sourcesArrayList[position].getName());
+        holder.tvTitle.setText(sourcesArrayList.get(position).getName());
 
-        Picasso.with(context).load(sourcesArrayList[position].getUrlsToLogos().getSmall())
+        Picasso.with(context).load(sourcesArrayList.get(position).getUrlsToLogos().getSmall())
                 .placeholder(R.mipmap.stub).into(holder.icon);
 
         holder.llMain.setOnClickListener(new View.OnClickListener() {

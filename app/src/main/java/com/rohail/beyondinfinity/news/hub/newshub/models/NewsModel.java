@@ -1,7 +1,7 @@
 package com.rohail.beyondinfinity.news.hub.newshub.models;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * Created by rohail on 2/9/2017.
@@ -11,7 +11,7 @@ public class NewsModel implements Serializable {
 
     private String status;
 
-    private Sources[] sources;
+    private ArrayList<Sources> sources;
 
     public String getStatus() {
         return status;
@@ -21,11 +21,11 @@ public class NewsModel implements Serializable {
         this.status = status;
     }
 
-    public Sources[] getSources() {
+    public ArrayList<Sources> getSources() {
         return sources;
     }
 
-    public void setSources(Sources[] sources) {
+    public void setSources(ArrayList<Sources> sources) {
         this.sources = sources;
     }
 
@@ -33,7 +33,7 @@ public class NewsModel implements Serializable {
     public String toString() {
         return "NewsModel{" +
                 "status='" + status + '\'' +
-                ", sources=" + Arrays.toString(sources) +
+                ", sources=" + sources +
                 '}';
     }
 }

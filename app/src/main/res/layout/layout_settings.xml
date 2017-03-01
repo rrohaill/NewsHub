@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="?attr/actionBarSize">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginRight="@dimen/margin_standard"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_large"
+            android:paddingTop="@dimen/margin_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:gravity="left"
+                android:shadowColor="@color/white"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="0.6"
+                android:text="Facebook"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/textViewTextSizeLarge" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/sw_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/layoutList"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey_bg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLabelConnect"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginRight="@dimen/margin_standard"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_large"
+            android:paddingTop="@dimen/margin_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:gravity="left"
+                android:shadowColor="@color/white"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="0.6"
+                android:text="Twitter"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/textViewTextSizeLarge" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/sw_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_id" />
+
+</RelativeLayout>

@@ -48,7 +48,7 @@
 
     <color name="transparent">@android:color/transparent</color>
     //TODO check implementation for this color
-    <color name="transparent_black">#55000000</color>
+    <color name="transparent_black">#ff000000</color>
     <color name="grey_bg">#E4E4E4</color>
 
     <!-- drawer layout -->

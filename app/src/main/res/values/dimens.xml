@@ -12,7 +12,7 @@
     <dimen name="bookmeGridTitleHeight">60dp</dimen>
     <dimen name="articleGridTitleHeight">90dp</dimen>
     <dimen name="bookmeGridImageHeight">170dp</dimen>
-    <dimen name="articleGridImageHeight">225dp</dimen>
+    <dimen name="articleGridImageHeight">215dp</dimen>
     <dimen name="busTicketingHeaderHeight">130dp</dimen>
     <dimen name="busTicketingHeaderContactIconHeight">28dp</dimen>
     <dimen name="movieTicketingHeaderHeight">140dp</dimen>
@@ -26,6 +26,13 @@
     <dimen name="textViewTextSizeLarger">20dp</dimen>
     <dimen name="textViewTextSizeXLarge">24dp</dimen>
     <dimen name="textViewTextSizeXXXLarge">40dp</dimen>
+
+    <dimen name="buttonHeightNormal">50dp</dimen>
+    <dimen name="buttonHeightSmall">40dp</dimen>
+    <dimen name="buttonWidthSmall">110dp</dimen>
+    <dimen name="buttonWidthNormal">130dp</dimen>
+    <dimen name="buttonWidthLarge">140dp</dimen>
+    <dimen name="buttonWidthXLarge">200dp</dimen>
 
     <dimen name="textViewMarginXSmall">3dp</dimen>
     <dimen name="textViewMarginSmall">5dp</dimen>

@@ -1,9 +1,6 @@
 package com.rohail.beyondinfinity.news.hub.newshub.Adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,19 +42,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         holder.tvTitle.setText(sourcesArrayList[position].getTitle());
 
         Picasso.with(context).load(sourcesArrayList[position].getUrlToImage())
-                .placeholder(R.mipmap.stub).into(holder.icon, new com.squareup.picasso.Callback() {
-            @Override
-            public void onSuccess() {
-                holder.icon.buildDrawingCache();
-                Bitmap bitmap = holder.icon.getDrawingCache();
-                generatePalette(bitmap, holder.tvTitle);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
+                .placeholder(R.mipmap.stub).into(holder.icon);
 
 
         holder.llMain.setOnClickListener(new View.OnClickListener() {
@@ -68,19 +53,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         });
 
     }
-
-    private void generatePalette(Bitmap path, final TextView textView) {
-
-        int defaultColor = Color.parseColor("#000000");
-
-        Palette.from(path).generate(new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                textView.setTextColor(palette.getDominantColor(context.getResources().getColor(R.color.dark_gray)));
-            }
-        });
-    }
-
 
     @Override
     public ArticleAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
