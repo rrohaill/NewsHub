@@ -245,6 +245,24 @@ public class MainActivity extends BaseActivity
 
             @Override
             public void onProcessNext(ArrayList<Object> listObject) {
+
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    final Rect viewRect = new Rect();
+//                    clickedView.getGlobalVisibleRect(viewRect);
+//
+//                    // create Explode transition with epicenter
+//                    Transition explode = new Explode()
+//                            .setEpicenterCallback(new Transition.EpicenterCallback() {
+//                                @Override
+//                                public Rect onGetEpicenter(Transition transition) {
+//                                    return viewRect;
+//                                }
+//                            });
+//                    explode.setDuration(1000);
+//                    TransitionManager.beginDelayedTransition(gridview, explode);
+//
+//                }
+
                 Intent intent = new Intent(MainActivity.this, ArticlesActivity.class);
                 intent.putExtra(Constants.IntentKeys.ARTICLE_MODEL, articleModel);
                 startActivity(intent);
